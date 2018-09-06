@@ -481,7 +481,10 @@ Para agregarle los tipos a una libreria hacemos lo siguiente:
     1) npm install, con el nombre de la libreria agregandole el prefijo @types/ por ejemplo:    
            npm install @types/react
 
-    2) Si nos dice que no existe el paquete podemos usar la libreria sin los tipos, (ver instrucciones para eso abajo).
+    2) Si nos dice que no existe el paquete puede ser que sea por que la libreria ya esta programada en TypeScript y no necesitamos
+       los tipos aparte por que vienen ya, corroborar que funciona con typescript en ese caso.
+
+    3) Si los tipos no los tenemos entonces podemos usar la libreria sin los tipos, (ver instrucciones para eso abajo).
 */
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
