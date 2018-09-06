@@ -22,7 +22,12 @@
     Este documento primero explica como instalar Typescript (se puede saltear esa parte) y despues hace un recorrido por todas
     las cosas que hay que saber para poder trabajar con Typescript, en una hora se puede aprender si se le ponen ganas y se 
     enseña bien.
+
+    Este archivo esta pensado para verlo coloreado, asi que conviene descargarlo y abrirlo con un editor compatible con TypeSciprt 
+    como por ejemplo el VS Code.
 */
+
+
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 /////////////////////////////////////////////////// INSTALAR TYPESCRIPT EN EL SISTEMA ////////////////////////////////////////////
