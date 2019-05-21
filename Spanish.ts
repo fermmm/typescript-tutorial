@@ -87,7 +87,7 @@
     /*
         Otro ejemplo con un objeto:
     */
-    let ejemplo: {valor1: string, valor2: number} = {valor1: "hola", valor2: 666};
+    let ejemplo2: {valor1: string, valor2: number} = {valor1: "hola", valor2: 666};
 
     /*
         Los tipos literales se vuelven largos e ilegibles muy facilmente, para solucionar eso existen las interfaces y los enums, de esa manera
@@ -102,7 +102,7 @@
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////  EJEMPLO DE UNA CLASE ESCRITA CON TYPESCRIPT ///////////////////////////////////////////////////////////
 
-export class Employee implements ISarasa
+export class Employee implements IExample
 {
     private department  : string | number;							// Se puede poner como tupo mas de un tipo a la vez separado por | , esto se llama: "Union Types".
     public  _list       : string[];									// Los arrays son tipados, solo pueden contener elementos del tipo indicado 
@@ -260,9 +260,6 @@ function exampleInMethod(newDirection:Direction)
 	if(newDirection == Direction.Left)
 		console.log("going left");
 }
-
-/////// Obtener el nombre de un elemento como string (es raro que se necesite):
-const upName: string = (string)Direction.Up;		// Nos guarda: "Up". Esto es especialmente util al armar un JSON
 
 /*
 	El transpilador transforma los usos del enum en numeros, se puede especificar que numeros queremos para cada elemento 
