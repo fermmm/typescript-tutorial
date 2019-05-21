@@ -76,8 +76,8 @@
         En el siguiente ejemplo la variable saludo no solo tiene que ser un string si no que el string tiene que decir "hola", de 
         lo contrario nos da error.
     */
-    let saludo: "hola" = "chau";    // Da error
-    let saludo: "hola" = "hola";    // Funciona
+    let saludo1: "hola" = "chau";    // Da error
+    let saludo2: "hola" = "hola";    // Funciona
 
     /*
         Otro ejemplo con numeros:
