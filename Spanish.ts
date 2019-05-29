@@ -1,58 +1,60 @@
 /* 
-    Este archivo esta pensado para verlo coloreado, asi que conviene 
-    descargarlo y abrirlo con un editor compatible con TypeSciprt 
-    como por ejemplo el VS Code.
+    Este archivo esta pensado para verlo coloreado y con los errores 
+    correspondientes, asi que conviene descargarlo y abrirlo con un
+    editor compatible con TypeSciprt como por ejemplo el VS Code.
 */
 
-///////////////////////////////////////  QUE HAY EN ESTE DOCUMENTO Y ¿QUE CARAJO ES TYPESCRIPT?  ////////////////////////////////
+///////////////////////////////  QUE HAY EN ESTE DOCUMENTO Y ¿QUE CARAJO ES TYPESCRIPT?  ////////////////////////////
 /*
-    Este documento hace un recorrido por todas las cosas que hay que saber para poder trabajar con Typescript, en una hora se 
-    puede aprender si se le ponen ganas y se enseña bien.
+    Este documento hace un recorrido muy rapido por todas las cosas que hay que saber para poder trabajar con 
+    Typescript, en una hora se puede aprender si se le ponen ganas y se enseña bien.
 
-    Todos los lenguajes incluyendo las ultimas versiones de PHP y Python tienen tipado, osea son como TypeScript, solo faltaba 
-    que JavaScript tenga esta funcionalidad que es indispensable en un lenguaje de calidad. Usan Typescript: Google, Github, 
-    Facebook, Microsoft y casi todas las empresas conocidas.
+    Todos los lenguajes incluyendo las ultimas versiones de PHP y Python tienen "tipado estatico", osea son como 
+    TypeScript, solo faltaba que JavaScript tenga esta funcionalidad que es indispensable en un lenguaje de calidad. 
+    Usan Typescript: Google, Github, Facebook, Microsoft y casi todas las empresas conocidas.
 
-    Typescript nos obliga a escribir el tipo de cada variable que creamos, esto es una información extra en el código que permite
-    que el editor entienda mucho mejor nuestro codigo y nos pueda ayudar con autocompletado de calidad, funcionalidades de
-    automatizacion de trabajo que no sabias que existian en el editor, señalamiento de bugs mientras se escribe, etc, etc.
+    El tipado estatico nos obliga a escribir el tipo de cada variable que creamos, esto es una información extra en 
+    el código que permite que el editor entienda mucho mejor nuestro codigo y nos pueda ayudar con autocompletado de 
+    calidad, funcionalidades de automatizacion de trabajo que no sabias que existian en el editor, señalamiento de 
+    bugs mientras se escribe, etc, etc.
 
-    Esto implica que estamos escribiendo una documentación implicita (obligatoria) que tambien sirve para poder leer mejor nuestro
-    codigo sin tener que abrir archivos y documentaciones para saber como proceder con un codigo que no es nuestro o que no recordamos.
+    Esto implica que estamos escribiendo una documentación implicita (obligatoria) que tambien sirve para poder leer 
+    mejor nuestro codigo sin tener que abrir archivos y documentaciones para saber como proceder con un codigo que 
+    no es nuestro o que no recordamos.
 
-    Asi que todo el tiempo extra que necesitamos para escribir lo que Typescript nos obliga, nos lo devuelve multiplicado mas tarde 
-    en bugs que no tenemos que arreglar y en las demas ventajas antes explicadas, no consume tiempo si no todo lo contrario.
+    Asi que todo el tiempo extra que necesitamos para escribir lo que Typescript nos obliga, nos lo devuelve 
+    multiplicado mas tarde en bugs que no tenemos que arreglar y en las demas ventajas antes explicadas, no consume 
+    tiempo si no todo lo contrario.
 
-    Typescript funciona igual que babel: se compila con webpack o con el compilador de Typescript y se genera un Javascript comun, 
-    asi que es 100% compatible con todos los navegadores por que no esta presente en la ejecucion final en el navegador, es una 
-    herramienta para usar mientras se programa.
+    Typescript funciona igual que babel: Procesa nuestro codigo y genera un Javascript comun, se instala como un 
+    plugin de webpack. Asi que es 100% compatible con todos los navegadores por que no esta presente en la ejecucion 
+    final en el navegador, es una herramienta para usar mientras se programa.
 */
 
-
-
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//////////////////////////////////////////////////////// ANTES DE EMPEZAR ////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////// ANTES DE EMPEZAR //////////////////////////////////////////////
 
 /*
     1) Ejecutar el comando: npm install typescript tslint -g
-    2) Instalar el plugin TSlint para Visual Studio Code (en caso de que se use ese editor)
+    2) Instalar el plugin TSlint para Visual Studio Code o para el editor que uses
 */
 
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//////////////////////////////////////////////////// LO PRINCIPAL  /////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////// LO PRINCIPAL  /////////////////////////////////////////////////////
 
 /*
-    La diferencia entre Typescript y Javascript es que hay que escribir los tipos al crear una variable o una funcion, por ejemplo:
+    La diferencia entre Typescript y Javascript es que hay que escribir los tipos al crear una variable o una funcion, 
+    por ejemplo:
 */
 
-    const miVariable: string = "hola";
+    const palabraDeSaludo: string = "hola";
 
     function saludo(nombre: string): string {    // Aca especificamos el tipo del parametro y que tipo devuelve la funcion.
-        return "hola " + nombre;
+        return palabraDeSaludo + " " + nombre;
     }
 
 /*
-    La gracia de escribir el tipo es que el contenido que le asignas a la variable tiene que ser del tipo que escribiste al crearla, 
+    La gracia de escribir el tipo es que el contenido que le asignas a la variable tiene que ser del tipo que escribiste, 
     de lo contrario nos va a dar un error.
 
     Los tipos que se pueden poner son estos:
@@ -61,9 +63,9 @@
     number    // Para los numeros
     boolean   // Para los booleanos
     Array<TIPO_DEL_CONTENIDO> /* o tambien puede ser: */ TIPO_DEL_CONTENIDO[]    // Para los arrays
-    void 	// Se usa solo para indicar que una funcion no devuelve nada.
-    (a:string, b:string)=>void	// Ejemplo de un tipo para una funcion o una arrow function, si, es largo de escribir.
-    NombreDeClase	            // Para una clase el tipo es el mismo nombre de la clase. 
+    void 	// Se usa solo para indicar que algo no devuelve nada.
+    (a:string, b:string)=>void	// Ejemplo de un tipo para una funcion o una arrow function, (si, es largo de escribir).
+    NombreDeClase	            // Para la instancia de una clase el tipo es el mismo nombre de la clase. 
     NombreDeInterfaz            // Ver mas abajo que son las Interfaces
     NombreDeEnum                // Ver mas abajo que son los Enums
     any 	// NO HAY QUE USARLO, desactiva el tipado, si sentis que es la unica solucion a un problema es por que algo esta mal o te falta aprender algo.
@@ -73,8 +75,8 @@
     Tipos literales:
 */
     /*
-        En el siguiente ejemplo la variable saludo no solo tiene que ser un string si no que el string tiene que decir "hola", de 
-        lo contrario nos da error.
+        En el siguiente ejemplo la variable saludo no solo tiene que ser un string si no que el string 
+        tiene que decir "hola", de lo contrario nos da error.
     */
     let saludo1: "hola" = "chau";    // Da error
     let saludo2: "hola" = "hola";    // Funciona
@@ -90,17 +92,19 @@
     let ejemplo2: {valor1: string, valor2: number} = {valor1: "hola", valor2: 666};
 
     /*
-        Los tipos literales se vuelven largos e ilegibles muy facilmente, para solucionar eso existen las interfaces y los enums, de esa manera
-        podemos escribir el tipo aparte y ponerle un nombre que se usa como el tipo. Mas abajo esta explicado en mas detalle.
+        Los tipos literales se vuelven largos e ilegibles muy facilmente, para solucionar eso existen las 
+        interfaces y los enums, de esa manera podemos escribir el tipo aparte y ponerle un nombre que se 
+        usa como el tipo. Mas abajo esta explicado en mas detalle.
     */
 
 /*
-    Typescript agrega una cosa mas, los modificadores de acceso, private y public, esto sirve para que una propiedad de una clase no pueda ser leida desde
-    afuera (private) o si pueda (public, es lo que viene por defecto en javascript). Mas abajo hay una explicacion detallada.
+    Typescript agrega una cosa mas, los modificadores de acceso, private y public, esto sirve para que una
+    propiedad de una clase no pueda ser leida desde afuera (private) o si pueda (public, es lo que viene por
+    defecto en javascript). Mas abajo hay una explicacion detallada.
 */
 
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-////////////////////////////////////  EJEMPLO DE UNA CLASE ESCRITA CON TYPESCRIPT ///////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////  EJEMPLO DE UNA CLASE ESCRITA CON TYPESCRIPT //////////////////////////
 
 export class Employee implements IExample
 {
@@ -160,12 +164,12 @@ export class Employee implements IExample
     }
 }
 
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-/////////////////////////////////////////////////  MODIFICADORES DE ACCESO  //////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////  MODIFICADORES DE ACCESO  ////////////////////////////////
 
 /*
-    Nos permite hacer que una clase tenga una especie de api publica y privada para que no se acceda ni se haga autocompletado de cosas 
-    que no hay que llamar desde afuera.
+    Nos permite hacer que una clase tenga una especie de api publica y privada para que no se acceda ni se 
+    haga autocompletado de cosas que no hay que llamar desde afuera.
 */
 
 export class Person
@@ -187,17 +191,18 @@ export class Person
     }
 }
 
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-///////////////////////////////////////////////////////  INTERFACES  /////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////  INTERFACES  ///////////////////////////////////
 
 /*
-    Como vimos antes con los tipos literales, se pueden escribir las keys de un objeto con su tipo como el tipo del objeto asi:
+    Como vimos antes con los tipos literales, se pueden escribir las keys de un objeto con su tipo como el
+    tipo del objeto asi:
 */
 let ejemplo: {valor1: string, valor2: number} = {valor1: "hola", valor2: 666};
 
 /*
-    Pero un tipo no puede ser tan largo por una cuestion de legibilidad, asi que se lo puede escribir aparte con un nombre y 
-    usar ese nombre como el tipo, asi queda mas legible, eso son las interfaces.
+    Pero un tipo no puede ser tan largo por una cuestion de legibilidad, asi que se lo puede escribir 
+    aparte con un nombre y usar ese nombre como el tipo, asi queda mas legible, eso son las interfaces.
 */
 
 /* 
@@ -207,40 +212,45 @@ export interface IExample 			  // Las interfaces se usa escribirlas con una I ad
 {
     name: string;                     // Ejemplo de propiedad obligatoria (si no esta presente en el objeto tira error)
     color?: string;                   // Ejemplo de propiedad opcional (es con el signo de interrogación)
-    walk(): string;                   // Ejemplo de metodo obligatorio.
+    walk?(): number;                  // Ejemplo de metodo obligatorio.
     getHairType?(): number;           // Ejemplo de metodo opcional.
 }
 
 /* 
     Utilizar la interfaz con una variable:
 */
-const miObjeto: IExample = {name:"pedro", color:"red"}      // En este ejemplo esto nos da error por que nos falta walk()
+const miObjeto: IExample = {color:"red", walk: () => 200}      // En este ejemplo esto nos da error por que nos falta "name"
 
 /*    
-    Ademas se pueden aplicar a claseses, con la palabra implements, esto obliga a la clase a que implemente lo que esta en 
-    la interfaz.
-    De esa manera el nombre de la interfaz puede ser usado como el tipo para la clase y tambien vale para todas las clases que
-    implementen la interfaz haciendolas compatibles en el tipado, por ejemplo la interfaz IMascota se puede usar como tipo para
-    las clases Perro y Gato (siempre que ambas implementen la interfaz IMascota).
-
-    No hace falta que las clases implementen si o si una interfaz, pero si todos los objetos creados utilizando {}, deberian 
-    tener una interfaz.
+    Ademas se pueden aplicar a claseses, con la palabra implements, esto obliga a la clase a que 
+    implemente lo que esta en la interfaz.
+    De esa manera el nombre de la interfaz puede ser usado como el tipo para las instancias de la
+    clase y tambien vale para todas las clases que implementen la interfaz haciendolas compatibles
+    en el tipado, por ejemplo la interfaz IMascota se puede usar como tipo para
+    las instancias de Perro y Gato (siempre que ambas implementen la interfaz IMascota).
+    Para esto se usa la palabra "implements":
 */
 
 class MiClase implements IExample {}
 
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-///////////////////////////////////////////////////////////////// ENUMS  ////////////////////////////////////////////////////////////////
+/*
+    Como las propiedades de una clase se escriben con su tipo no hace falta que las clases implementen 
+    si o si una interfaz, pero si todos los objetos creados utilizando {}, deberian tener una interfaz.
+*/
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////// ENUMS  //////////////////////////////
 
 /*
-    Como vimos antes una variable puede tener varios tipos validos y pueden ser tipos literales, por ejemplo:
+    Como vimos antes una variable puede tener varios tipos validos y pueden ser tipos literales, 
+    por ejemplo:
 */
 
 const direccion: "left" | "right" | "top" | "down" = "left";
 
 /*
-    Esta variable es un string que puede tener esos 4 valores, pero se hace muy largo de leer, para solucionar
-    eso estan los enums.
+    Esta variable es un string que puede tener esos 4 valores, pero se hace muy largo de leer, 
+    para solucionar eso estan los enums.
 */
 
 /////// Declaración: 
@@ -262,8 +272,8 @@ function exampleInMethod(newDirection:Direction)
 }
 
 /*
-	El transpilador transforma los usos del enum en numeros, se puede especificar que numeros queremos para cada elemento 
-	del enum (es raro que se necesite):
+    El transpilador transforma los usos del enum en numeros, se puede especificar que numeros queremos
+    para cada elemento del enum (es raro que se necesite):
 
 		enum Direction {
 		    Up = 0,
@@ -283,8 +293,8 @@ function exampleInMethod(newDirection:Direction)
 */
 
 
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-///////////////////////////////////////////////////////////////// GENERICS //////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////// GENERICS //////////////////////////////////////////////////
 
 /*
     Este es el último concepto y el mas complicado de aprender aveces. 
@@ -319,8 +329,35 @@ const randomized:Array<string> = randomizeArray<string>(["Frutilla", "Chocolate"
 	Perderiamos la informacion del tipo, "any" no es bueno por que no contiene ninguna información.
 */
 
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-///////////////////////////////////////////////////////////////// CAST  ////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////// PARTIAL ///////////////////////////////////////////////////
+
+/*
+    En react usamos la funcion: this.setState(state) que acepta un objeto que tenga alguna de las propiedades
+    del state, si le pasas un objeto que no tiene ninguna propiedad del state nos da error o si tiene alguna
+    propiedad que no esta en el state tambien nos da error, la pregunta es, como sabe typescript esto?.
+    Es un tipo llamado Partial:
+ */
+
+let parteDelObjeto1: IExample = {  // Error: IExample tiene la propiedad "name" como obligatoria y no la estamos poniendo.
+    color: "Black"
+}
+
+const parteDelObjeto2: Partial<IExample> = {    // Aca no tenemos mas ese problema. Con que tenga alguna propiedad de IExample esta bien.
+    color: "Black"
+}
+
+const parteDelObjeto3: Partial<IExample> = {    // Error: la propiedad sarasa no esta en IExample.
+    sarasa: "Hola"
+}
+
+/*
+    Esto es muy util tanto en React como en cualquier otro codigo que incorpora el patron inmutability.
+*/
+
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////// CAST  ////////////////////////////////////////////////
 
 /*
     Se le llama castear cuando se quiere hacer pasar un tipo por otro, si son compatibles nos los va a permitir, los tipos 
@@ -340,26 +377,29 @@ hacerAlgo((ClaseHijo)instanciaClasePadre);
 */
 instanciaClaseHijo as ClasePadre
 
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-/////////////////////////////////////////////////////  USAR UNA LIBRERIA ESCRITA EN JS /////////////////////////////////////////////////////
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////// USAR UNA LIBRERIA ESCRITA EN JS /////////////////////////////////////
 
 /*
 Se pueden usar librerias hechas en JS como si estuvieran hechas en TS, la comunidad escribe archivos
-con extensión .d.ts que son definiciones de tipos para librerias de JS, hay muchas escritas y se encuentra de todo.
-En otras palabras le agrega los tipos a una libreria que no los tiene.
+con extensión .d.ts que son definiciones de tipos para librerias de JS, hay muchas escritas y ya casi 
+todo se encuentra. En otras palabras esto le agrega los tipos a una libreria que no los tiene.
 
 Para agregarle los tipos a una libreria hacemos lo siguiente:
     1) npm install, con el nombre de la libreria agregandole el prefijo @types/ por ejemplo:    
            npm install @types/react
 
-    2) Si nos dice que no existe el paquete puede ser que sea por que la libreria ya esta programada en TypeScript y no necesitamos
-       los tipos aparte por que vienen ya, corroborar que funciona con typescript en ese caso.
+    2) Si nos dice que no existe el paquete puede ser que sea por que la libreria ya esta programada en 
+       TypeScript y no necesitamos los tipos aparte por que vienen ya, en ese caso no tenemos que hacer 
+       nada y simplemente vemos el tipado.
 
-    3) Si los tipos no los tenemos entonces podemos usar la libreria sin los tipos, (ver instrucciones para eso abajo).
+    3) Si no tuvimos suerte con ninguno de los puntos anteriores y no tenemos los tipos entonces podemos
+       usar la libreria sin los tipos, (ver instrucciones para eso abajo).
 */
 
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//////////////////////////////////////// USAR UNA LIBRERIA EN JS QUE NADIE ESCRIBIO LOS TIPOS ///////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////// USAR UNA LIBRERIA EN JS QUE NADIE ESCRIBIO LOS TIPOS ////////////////////////
 
 /* 
     Para eso hay que agregar en el import, un comentario con el texto @ts-ignore, asi:
@@ -369,25 +409,28 @@ Para agregarle los tipos a una libreria hacemos lo siguiente:
 import { LibraryObject } from "example-library";
 
 
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//////////////////////////////////////// CREAR LOS TIPOS DE UNA LIBRERIA EN JS /////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////// CREAR LOS TIPOS DE UNA LIBRERIA EN JS //////////////////////////
 
 /*
-	El proceso para crear una definicion de tipos .d.ts es bastante automatizado, no requiere mucho tiempo, mas detalles en este link:
+    El proceso para crear una definicion de tipos .d.ts es bastante automatizado, no requiere mucho 
+    tiempo, mas detalles en este link:
 		https://stackoverflow.com/questions/12687779/how-do-you-produce-a-d-ts-typings-definition-file-from-an-existing-javascript
 */
 
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//////////////////////////////////////////////////////// CONVERTIR JSON EN UNA INTERFAZ /////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////// CONVERTIR JSON EN UNA INTERFAZ ///////////////////////////////
 
 /*
-	Hay aplicaciones web para convertir el texto de un JSON en una interfaz de TypeScript, el mejor al dia de la fecha es este:
+    Cuando recibimos un json y lo parseamos a un objeto, necesitamos el tipo para ese objeto, 
+    concretamente necesitamos la interfaz. Esto puede ser una tarea tediosa de hacer a mano, 
+    en esta aplicacion web pegamos el json y nos genera las interfaces bien hechas:
 	
 		https://jvilk.com/MakeTypes/
 */
 
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-////////////////////////////////////////// INSTALAR TYPESCRIPT EN UN PROYECTO CON NODE.JS ////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////// INSTALACION: EN UN PROYECTO CON NODE.JS ///////////////////////////
 
 /*
     1) Creamos una carpeta vacia y abrimos la carpeta con el VS code.
@@ -474,11 +517,12 @@ import { LibraryObject } from "example-library";
     Presionar F5 y seleccionar Node.js          (no puede estar corriendo el server)
 */
 
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-////////////////////////////////////////// INSTALAR TYPESCRIPT EN UN PROYECTO CON WEBPACK ////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////// INSTALACION: EN UN PROYECTO CON WEBPACK ////////////////////////////////
 
 /*
-    Si vas a usar React lo mas rapido es usar un boilerplate, osea un proyecto inicial con todo configurado como este:
+    Si vas a usar React lo mas rapido es usar un boilerplate, osea un proyecto inicial con 
+    todo configurado como este:
         https://github.com/fermmm/boilerplate-typescript-react-redux-webpack
 
     Para configurarlo de cero sin React estos son los pasos:
@@ -518,7 +562,8 @@ module: {
 		}
 
 /*
-	3) En el mismo archvo (webpack.config.js) dentro de resolve.extensions tiene que estar '.tsx' y '.ts':
+    3) En el mismo archvo (webpack.config.js) dentro de resolve.extensions tiene que 
+       estar '.tsx' y '.ts':
 */
 resolve: {
     extensions: [ '.tsx', '.ts', '.js' ]
