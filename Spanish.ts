@@ -256,7 +256,7 @@ const direccion: "left" | "right" | "top" | "down" = "left";
 */
 
 /////// Declaración: 
-export enum Direction {
+enum Direction {
     Up,
     Down,
     Left,
@@ -277,23 +277,21 @@ function exampleInMethod(newDirection:Direction)
     El transpilador transforma los usos del enum en numeros, se puede especificar que numeros queremos
     para cada elemento del enum (es raro que se necesite):
 */
-		enum Directions {
-		    Up = 0,
-		    Down = 1,
-		    Left = 2,
-		    Right = 3
-		}
+enum Directions {
+    Up = 0,
+    Down = 1,
+    Left = 2,
+    Right = 3
+}
 
 ///////// También se pueden hacer "string enums":
 
-		enum Directions2 {
-		    Up = "UP",
-		    Down = "DOWN",
-		    Left = "LEFT",
-		    Right = "RIGHT",
-		}
-
-
+enum Directions2 {
+    Up = "UP",
+    Down = "DOWN",
+    Left = "LEFT",
+    Right = "RIGHT",
+}
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////// GENERICS //////////////////////////////////////////////////
