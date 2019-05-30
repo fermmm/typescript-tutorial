@@ -209,7 +209,7 @@ let ejemplo: {valor1: string, valor2: number} = {valor1: "hola", valor2: 666};
 /* 
     Declarar una interfaz:
 */
-export interface IExample 			  // Las interfaces se usa escribirlas con una I adelante del nombre.
+interface IExample 			          // Las interfaces se usa escribirlas con una I adelante del nombre.
 {
     name: string;                     // Ejemplo de propiedad obligatoria (si no esta presente en el objeto tira error)
     color?: string;                   // Ejemplo de propiedad opcional (es con el signo de interrogación)
