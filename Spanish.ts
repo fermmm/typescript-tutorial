@@ -201,8 +201,9 @@ export class Person
 let ejemplo: {valor1: string, valor2: number} = {valor1: "hola", valor2: 666};
 
 /*
-    Pero un tipo no puede ser tan largo por una cuestion de legibilidad, asi que se lo puede escribir 
-    aparte con un nombre y usar ese nombre como el tipo, asi queda mas legible, eso son las interfaces.
+    Pero un tipo no puede ser tan largo por una cuestion de legibilidad, de hecho es una muy mala practica
+    escribir un tipo literal asi. Asi que se lo puede escribir aparte con un nombre y usar ese nombre como
+    el tipo, asi queda mas legible, eso son las interfaces.
 */
 
 /* 
@@ -219,7 +220,7 @@ export interface IExample 			  // Las interfaces se usa escribirlas con una I ad
 /* 
     Utilizar la interfaz con una variable:
 */
-const miObjeto: IExample = {color:"red", walk: () => 200}      // En este ejemplo esto nos da error por que nos falta "name"
+const miObjeto: IExample = {color: "red", walk: () => 200}      // En este ejemplo esto nos da error por que nos falta "name"
 
 /*    
     Ademas se pueden aplicar a claseses, con la palabra implements, esto obliga a la clase a que 
@@ -231,11 +232,12 @@ const miObjeto: IExample = {color:"red", walk: () => 200}      // En este ejempl
     Para esto se usa la palabra "implements":
 */
 
-class MiClase implements IExample {}
+class MiClase implements IExample {}    // Error: No implementamos las propiedades de IExample en la clase
 
 /*
     Como las propiedades de una clase se escriben con su tipo no hace falta que las clases implementen 
-    si o si una interfaz, pero si todos los objetos creados utilizando {}, deberian tener una interfaz.
+    si o si una interfaz, pero si hace falta que todos los objetos escritos utilizando {}, deberian 
+    su una interfaz.
 */
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////
