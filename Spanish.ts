@@ -203,7 +203,7 @@ let ejemplo: {valor1: string, valor2: number} = {valor1: "hola", valor2: 666};
 /*
     Pero un tipo no puede ser tan largo por una cuestion de legibilidad, de hecho es una muy mala practica
     escribir un tipo literal asi. Asi que se lo puede escribir aparte con un nombre y usar ese nombre como
-    el tipo, asi queda mas legible, eso son las interfaces.
+    el tipo, asi queda mas legibley es reautilizable, eso son las interfaces.
 */
 
 /* 
