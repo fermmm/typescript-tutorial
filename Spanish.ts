@@ -220,7 +220,7 @@ interface IExample 			          // Las interfaces se usa escribirlas con una I a
 /* 
     Utilizar la interfaz con una variable:
 */
-const miObjeto: IExample = {color: "red", walk: () => 200}      // En este ejemplo esto nos da error por que nos falta "name"
+const miObjeto: IExample = {color: "red", walk: () => 200}      // Error: falta la propiedad "name"
 
 /*    
     Ademas se pueden aplicar a claseses, con la palabra implements, esto obliga a la clase a que 
@@ -237,7 +237,7 @@ class MiClase implements IExample {}    // Error: No implementamos las propiedad
 /*
     Como las propiedades de una clase se escriben con su tipo no hace falta que las clases implementen 
     si o si una interfaz, pero si hace falta que todos los objetos escritos utilizando {}, deberian 
-    su una interfaz.
+    tener su interfaz.
 */
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////
