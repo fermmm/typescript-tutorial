@@ -239,11 +239,11 @@ class MiClase implements IExample {}
 */
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////
-///////////////////////////////////////////////////////////////// ENUMS  //////////////////////////////
+///////////////////////////////////////// ENUMS  //////////////////////////////////////////////////////
 
 /*
-    Como vimos antes una variable puede tener varios tipos validos y pueden ser tipos literales, 
-    por ejemplo:
+    Como vimos antes una variable puede tener varios tipos simultaneamente y pueden ser tipos 
+    literales, por ejemplo:
 */
 
 const direccion: "left" | "right" | "top" | "down" = "left";
@@ -274,23 +274,23 @@ function exampleInMethod(newDirection:Direction)
 /*
     El transpilador transforma los usos del enum en numeros, se puede especificar que numeros queremos
     para cada elemento del enum (es raro que se necesite):
-
-		enum Direction {
+*/
+		enum Directions {
 		    Up = 0,
 		    Down = 1,
 		    Left = 2,
 		    Right = 3
 		}
 
-	También se pueden hacer "string enums":
+///////// También se pueden hacer "string enums":
 
-		enum Direction {
+		enum Directions2 {
 		    Up = "UP",
 		    Down = "DOWN",
 		    Left = "LEFT",
 		    Right = "RIGHT",
 		}
-*/
+
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -298,10 +298,10 @@ function exampleInMethod(newDirection:Direction)
 
 /*
     Este es el último concepto y el mas complicado de aprender aveces. 
-    Es para que nunca sea necesario usar los tipos "any" u "object", caundo si o si necesitas esos tipos es por que tenes que 
-    recurrir a esto.
-    Esta herramienta permite crear metodos o clases donde le pasamos el tipo entre los caracteres < > e internamente trabaja 
-    con ese tipo sin importar cual sea.
+    Es para que nunca sea necesario usar los tipos "any" u "object", caundo si o si necesitas esos 
+    tipos es por que tenes que recurrir a esto.
+    Esta herramienta permite crear metodos o clases donde le pasamos el tipo entre los caracteres < > 
+    e internamente trabaja con ese tipo sin importar cual sea.
 */
 
 /**
@@ -310,8 +310,8 @@ function exampleInMethod(newDirection:Direction)
 function randomizeArray<T>(array: Array<T>): Array<T> 
 {
     /*
-        Esta funciona mezclaria un array, no importa de que tipo es, por
-        que no nos metemos con los elementos, entonces necesitamos que sea generica (generic).
+        Esta funciona mezclaria un array, no importa de que tipo es
+        por que no nos metemos con los elementos.
     */
    return array;
 }
@@ -319,7 +319,7 @@ function randomizeArray<T>(array: Array<T>): Array<T>
 /**
  * Usar:
  */
-const randomized:Array<string> = randomizeArray<string>(["Frutilla", "Chocolate"]);
+const randomized: Array<string> = randomizeArray<string>(["Frutilla", "Chocolate"]);
 
 /*
 	Si no usaramos esto, el método habría que escribirlo asi:
@@ -336,7 +336,7 @@ const randomized:Array<string> = randomizeArray<string>(["Frutilla", "Chocolate"
     En react usamos la funcion: this.setState(state) que acepta un objeto que tenga alguna de las propiedades
     del state, si le pasas un objeto que no tiene ninguna propiedad del state nos da error o si tiene alguna
     propiedad que no esta en el state tambien nos da error, la pregunta es, como sabe typescript esto?.
-    Es un tipo llamado Partial:
+    Es un tipo que viene con typescript que se llama Partial<>:
  */
 
 let parteDelObjeto1: IExample = {  // Error: IExample tiene la propiedad "name" como obligatoria y no la estamos poniendo.
@@ -353,6 +353,7 @@ const parteDelObjeto3: Partial<IExample> = {    // Error: la propiedad sarasa no
 
 /*
     Esto es muy util tanto en React como en cualquier otro codigo que incorpora el patron inmutability.
+    Hay mas tipos que vienen con Typescript para hacer otras cosas pero son poco comunes.
 */
 
 
@@ -360,11 +361,13 @@ const parteDelObjeto3: Partial<IExample> = {    // Error: la propiedad sarasa no
 //////////////////////////////////////////////// CAST  ////////////////////////////////////////////////
 
 /*
-    Se le llama castear cuando se quiere hacer pasar un tipo por otro, si son compatibles nos los va a permitir, los tipos 
-    compatibles son las clases padres con sus clases hijos.
+    Se le llama castear cuando se quiere hacer pasar un tipo por otro, si son compatibles nos los va 
+    a permitir, los tipos compatibles son las clases padres con sus clases hijos o las clases que
+    implementan una interfaz.
 
-    Se puede castear con 2 sintaxis, una sirve para cuando la otra tira error de sintaxis por culpa del contexto o para 
-    cuando se quiere dejar mas legible el codigo, funcionalmente son identicas en TS.
+    Se puede castear con 2 sintaxis, una sirve para cuando la otra tira error de sintaxis por culpa
+    del contexto o para cuando se quiere dejar mas legible el codigo, funcionalmente son 
+    identicas en TS.
 */
 
 /* 
@@ -410,7 +413,7 @@ import { LibraryObject } from "example-library";
 
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////
-//////////////////////////////////////// CREAR LOS TIPOS DE UNA LIBRERIA EN JS //////////////////////////
+///////////////////////////////// CREAR LOS TIPOS DE UNA LIBRERIA EN JS /////////////////////////////////
 
 /*
     El proceso para crear una definicion de tipos .d.ts es bastante automatizado, no requiere mucho 
@@ -419,7 +422,7 @@ import { LibraryObject } from "example-library";
 */
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////
-///////////////////////////////////////// CONVERTIR JSON EN UNA INTERFAZ ///////////////////////////////
+///////////////////////////////////// CONVERTIR JSON EN UNA INTERFAZ ///////////////////////////////////
 
 /*
     Cuando recibimos un json y lo parseamos a un objeto, necesitamos el tipo para ese objeto, 
@@ -430,7 +433,7 @@ import { LibraryObject } from "example-library";
 */
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////
-///////////////////////////////////// INSTALACION: EN UN PROYECTO CON NODE.JS ///////////////////////////
+///////////////////////////////// INSTALACION: EN UN PROYECTO CON NODE.JS ///////////////////////////////
 
 /*
     1) Creamos una carpeta vacia y abrimos la carpeta con el VS code.
